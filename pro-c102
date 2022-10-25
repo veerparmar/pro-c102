@@ -1,0 +1,22 @@
+import os
+import shutil
+fromdir = "C:/Users/Veer/Desktop"
+todir = "C:/Users/Veer/Desktop/documents"
+listOfFiles = os.listdir(fromdir)
+#print(listOfFiles)
+
+for file_name in listOfFiles:
+    name, extention = os.path.splitext(file_name)
+    if extention == '':
+        continue
+    if extention in ['.pdf']:
+        path1= fromdir + '/' + file_name 
+        path2= todir + '/' + 'documents'
+        path3= todir + '/' + 'documents' + '/' + file_name
+        if os.path.exists(path2):
+            print("moving"+file_name+"...")
+            shutil.move(path1,path3)
+        else :
+            os.makedirs(path2)
+            print("moving"+file_name+"...")
+            shutil.move(path1,path3)
